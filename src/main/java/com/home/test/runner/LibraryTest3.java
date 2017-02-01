@@ -5,13 +5,13 @@ package com.home.test.runner;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
-public class LibraryTest2 {
+public class LibraryTest3 {
 	private static WebDriver webDriver;
 	@Test public void testSomeLibraryMethod() {
-		webDriver.get("https://facebook.com");
+		webDriver.get("https://gmail.com");
     }
     public static void setDriver(WebDriver webDriver){
-    	LibraryTest2.webDriver=webDriver;
+    	LibraryTest3.webDriver=webDriver;
     	if(null==webDriver){
     		System.out.println("Inside Test2");
     	}

@@ -7,12 +7,19 @@ import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.*;
 
+import org.junit.AfterClass;
+
 public class LibraryTest {
-    @Test public void testSomeLibraryMethod() {
-    
-    	
+    private static WebDriver webDriver;
+	@Test public void testSomeLibraryMethod() {
+		webDriver.get("https://google.com");
     }
+	@AfterClass
+	public static void setDrt(){
+		System.out.println("Test After Class");
+	}
     public static void setDriver(WebDriver webDriver){
+    	LibraryTest.webDriver=webDriver;
     	if(null==webDriver){
     		System.out.println("Inside Test1");
     	}

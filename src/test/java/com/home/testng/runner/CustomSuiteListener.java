@@ -9,34 +9,22 @@ import org.testng.ISuite;
 import org.testng.ISuiteListener;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
-import org.testng.ITestNGListener;
 import org.testng.ITestResult;
 import org.testng.annotations.IConfigurationAnnotation;
 import org.testng.annotations.IDataProviderAnnotation;
 import org.testng.annotations.IFactoryAnnotation;
 import org.testng.annotations.IListenersAnnotation;
 import org.testng.annotations.ITestAnnotation;
+import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 
 public class CustomSuiteListener implements ISuiteListener,ITestListener,IAnnotationTransformer3 {
 
 	@Override
 	public void onStart(ISuite suite) {
-		List<XmlTest> list=suite.getXmlSuite().getTests();
-		for(XmlTest test:list){
-		}
-	}
-
-	@Override
-	public void onFinish(ISuite suite) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onTestStart(ITestResult result) {
-		// TODO Auto-generated method stub
-		
+		XmlSuite xmlSuite=suite.getXmlSuite();
+		List<XmlTest> list=xmlSuite.getTests();
+		list.size();
 	}
 
 	@Override
@@ -103,6 +91,18 @@ public class CustomSuiteListener implements ISuiteListener,ITestListener,IAnnota
 
 	@Override
 	public void transform(IListenersAnnotation annotation, Class testClass) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onTestStart(ITestResult result) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onFinish(ISuite suite) {
 		// TODO Auto-generated method stub
 		
 	}
