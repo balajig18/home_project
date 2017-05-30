@@ -8,3 +8,6 @@ services:
     - docker
 script:
     - ./gradlew build
+branches:
+    only:
+        - master
