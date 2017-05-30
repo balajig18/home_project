@@ -7,7 +7,8 @@ sudo: required
 services:
     - docker
 script:
-    - ./gradlew build
+    - ./gradlew assemble
+    - ./gradlew cucumber
 branches:
     only:
         - master

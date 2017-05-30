@@ -11,20 +11,52 @@ apply plugin: 'java'
 
 // In this section you declare where to find the dependencies of your project
 repositories {
-    // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
     mavenCentral()
 }
-
 dependencies {
     // The production code uses Guava
     compile 'com.google.guava:guava:20.0'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '2.23.0'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.0.1'
     compile group: 'org.testng', name: 'testng', version: '6.9.10'
+   	compile group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
     
-
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
+    testCompile group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testRuntime
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+          }
+    }
+
+    test {
+        java {
+            srcDir 'src/test/java'
+        }
+        resources {
+            srcDir 'src/test/resources' 
+        }
+    }
+  }
+
+task cucumber () {
+    dependsOn assemble, compileTestJava
+	doLast {
+        javaexec {
+            main = "cucumber.api.cli.Main"	
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output 
+            args = ['--plugin', 'html:build/cucumberReport','--glue', 'com.home.cucumber.stepdef', 'src/test/resources/*.Feature']
+        }
+    }
 }
 
