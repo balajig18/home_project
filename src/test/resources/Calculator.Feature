@@ -9,4 +9,4 @@ Feature: Addition
       | Number1 | Number2 | Result |
       |       1 |       3 |      4 |
       |    1000 |     150 |   1150 |
-      |    1200 |     150 |   1150 |
+      |    1200 |     150 |   1350 |
